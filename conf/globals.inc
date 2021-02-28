@@ -1,6 +1,8 @@
 <?php
+    session_start();
     require_once "src/functions.php";
     require_once "src/ChildController.php";
+    require_once "src/TimeHelper.php";
 
     $dbUser = "db1069571-14382";
     $dbPassword = "03z5WQ7FS4B6E9LL";
@@ -13,4 +15,6 @@
     }
     
     $childController = new ChildController($mysqli);
+
+    $_MAX_CAPA = 7;
 ?>

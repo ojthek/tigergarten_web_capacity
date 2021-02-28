@@ -30,6 +30,13 @@ class ChildController {
         $stmt->bind_param("sssiiiiii", $name, $fromDate, $toDate, $onMon, $onTue, $onWed, $onTur, $onFri, $id);
         $stmt->execute();
     }
+
+    public function getChilds4Period($from, $to) {
+        $stmt = $this->db->prepare("SELECT name, onMon, onTue, onWed, onTur, onFri FROM childs WHERE fromDate < ? AND toDate > ? ORDER BY name");
+        $stmt->bind_param("ss", $to->format("Y-m-d"), $from->format("Y-m-d"));
+        $stmt->execute();
+        return $stmt->get_result();
+    }
 }
 
 ?>

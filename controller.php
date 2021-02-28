@@ -1,11 +1,20 @@
 <?php
     require_once "conf/globals.inc";
 
-    var_dump($_POST);
-
     if (isset($_POST["action"])) {
         switch ($_POST["action"]) {
-            case "edit":
+            case "weekBefore":
+                $date = new TimeHelper($_SESSION["week"]);
+                $_SESSION["week"] = $date->weekBefore();
+                break;
+            case "weekAfter":
+                $date = new TimeHelper($_SESSION["week"]);
+                $_SESSION["week"] = $date->weekAfter();
+                break;
+            case "weekToday":
+                $date = new TimeHelper();
+                $_SESSION["week"] = $date->getDate();
+            case "editChild":
                 // $childController->updateChild(
                 //         $_POST["id"],
                 //         $_POST["name"], 
@@ -17,10 +26,10 @@
                 //         isset($_POST["onTur"]) ? 1 : 0, 
                 //         isset($_POST["onFri"]) ? 1 : 0);
                 break;
-            case "del":
+            case "delChild":
                 $childController->deleteChild($_POST["id"]);
                 break;
-            case "add":
+            case "addChild":
                 $childController->addChild($_POST["name"], 
                         $_POST["fromDate"], 
                         $_POST["toDate"], 

@@ -5,7 +5,10 @@ body {
 }
 table {
     width: 100%;
-    border-spacing: 0px;    
+    border-collapse: collapse;
+    border-radius: 10px 10px 5px 5px;
+    overflow: hidden;
+    box-shadow: 5px 5px ;   
 }
 thead {
     background-color: gray;
@@ -15,6 +18,16 @@ thead {
 }
 th {
     padding: 0px 5px 0px 5px;
+}
+th.sort {
+    cursor: pointer;
+}
+th.sort[dir=ASC] {
+    
+}
+tbody.overview td {
+    text-align: center;
+    vertical-align: top;
 }
 tbody td.checked {
     text-align: center;
@@ -28,6 +41,7 @@ tbody tr:nth-child(even) {
 tbody tr:nth-child(odd) {
     background: #FFF
 }
+
 tfoot {
     background-color: gray;
 }
@@ -36,6 +50,18 @@ tfoot td {
 }
 tfoot td.checked {
     text-align: center;
+}
+tfoot.overview td{
+    background-color: lightskyblue;
+    font-weight: bold;
+    text-align: center;
+}
+tfoot.overview td.freeCapa {
+    background-color: lightgreen;
+}
+tfoot.overview td.exhausted {
+    background-color: lightcoral;
+
 }
 button {
     -webkit-border-radius: 5px;
